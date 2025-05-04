@@ -1,10 +1,16 @@
 import os
 import subprocess
 
+"""
+Use for generating jobs for multiple models. Each job computes results for all ts metrics.
+Run LSTMAE individually as it requires changes in --test-set-size and --valid-set-size
+"""
+
 path = ""
 prediction_window = 1
 training_window = 24
 job_max_time_hours = 4
+models = ["LSTM", "GRU", "LSTM_FCN", "GRU_FCN", "InceptionTime", "Resnet"]
 
 
 def create_job(model, file):
@@ -35,7 +41,7 @@ def create_job(model, file):
     subprocess.run(["qsub", f"{path}/synced/temp_script.sh"])
 
 
-for model in ["LSTM", "GRU", "LSTM_FCN", "GRU_FCN", "InceptionTime", "Resnet"]:
+for model in models:
     for file in os.listdir(f"{path}/data/institutions/agg_1_hour/"):
         create_job(model, file)
 
