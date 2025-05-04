@@ -14,8 +14,8 @@ from tsai.all import (
     rmse,
 )
 
-from src.RunnerComponent import RunnerComponent
-from src.utils.constants import DATA_GROUPS, MODEL_MAPPER, MODEL_PARAMS
+from src.runner_component import RunnerComponent
+from src.utils.constants import MODEL_MAPPER, MODEL_PARAMS
 from src.utils.evaluation_metrics import get_prediction_metrics
 
 
@@ -105,3 +105,7 @@ class DLRunner(RunnerComponent):
             prediction_time=prediction_time,
             training_time=training_time,
         )
+        anomaly_indices = self.get_anomaly_test_set_indices(y_true, y_pred)
+        print(f"Identified {len(anomaly_indices)} anomalies")
+        if self.plot_anomalies:
+            self.create_plot(y_true, anomaly_indices)

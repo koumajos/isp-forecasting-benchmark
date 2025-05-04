@@ -9,6 +9,14 @@ MODEL_MAPPER = {
     "GRU": GRU,
 }
 
+base_lstmae_config = {
+    "batch_size": 32,
+    "num_layers": 1,
+    "epochs": 100,
+    "lr": 0.01,
+    "patience": 10,
+}
+
 MODEL_PARAMS = {
     "LSTM": {
         "batch_size": 16,
@@ -81,6 +89,16 @@ MODEL_PARAMS = {
         "dropout": 0.5,
         "num_layers": 1,
         "epochs": 100,
+    },
+    "LSTMAE": {
+        24: {
+            **base_lstmae_config,
+            "hidden_size": 16,
+        },
+        168: {
+            **base_lstmae_config,
+            "hidden_size": 112,
+        },
     },
 }
 

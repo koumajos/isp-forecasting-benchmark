@@ -1,7 +1,10 @@
 import argparse
 
-from src.DLRunner import DLRunner
-from src.RclstmRunner import RclstmRunner
+from src.dl_runner import DLRunner
+from src.rclstm_runner import RclstmRunner
+from src.lstmae_runner import LstmaeRunner
+from src.etsformer_runner import EtsformerRunner
+from src.ETSformer.utils.arguments import add_etsformer_args
 
 parser = argparse.ArgumentParser(description="Argument parser for data processing parameters.")
 
@@ -38,6 +41,13 @@ parser.add_argument(
 parser.add_argument("--model-name", type=str, default="LSTM_FCN", help="Model name.")
 parser.add_argument("--impute", type=str, default="zeros", help="Imputation method.")
 parser.add_argument("--prediction-window", type=int, default=1, help="Number of samples to predict.")
+parser.add_argument("--anomaly-threshold", type=float, default=0.09, help="Value for anomaly threshold.")
+parser.add_argument("--plot-anomalies", action="store_true", default=False, help="Flag to plot anomalies.")
+
+args, remaining = parser.parse_known_args()
+if args.model_name == "ETSformer":
+    parser = add_etsformer_args(parser)
+
 args = parser.parse_args()
 
 if args.sample and args.aggregation == "agg_10_minutes":
@@ -83,6 +93,10 @@ if __name__ == "__main__":
     for attr in attrs:
         if args.model_name == "RCLSTM":
             runner = RclstmRunner(attr, args)
+        elif args.model_name == "LSTMAE":
+            runner = LstmaeRunner(attr, args)
+        elif args.model_name == "ETSformer":
+            runner = EtsformerRunner(attr, args)
         else:
             runner = DLRunner(attr, args)
         runner.run()

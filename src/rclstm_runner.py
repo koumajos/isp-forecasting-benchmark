@@ -14,7 +14,7 @@ import torch
 from torch import nn, optim
 
 from rclstm.rclstm import RNN
-from src.RunnerComponent import RunnerComponent
+from src.runner_component import RunnerComponent
 from src.utils.constants import MODEL_PARAMS
 from src.utils.evaluation_metrics import get_prediction_metrics
 
