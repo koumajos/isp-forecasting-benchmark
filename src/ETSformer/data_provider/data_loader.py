@@ -261,9 +261,7 @@ class Dataset_Custom(Dataset):
         df_raw = pd.read_csv(os.path.join(self.root_path, self.data_path))
 
         times = pd.read_csv(f"{self.root_path}/times.csv")
-        df_raw = impute_missing_data(
-            df=df_raw, times=times, ts_attr=self.target, method="zeros"
-        )
+        df_raw = impute_missing_data(df=df_raw, times=times, ts_attr=self.target, method="zeros")
 
         df_raw["date"] = df_raw["time"]
 

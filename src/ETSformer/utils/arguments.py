@@ -1,10 +1,9 @@
 import os
 
+
 def add_etsformer_args(parser):
     parser.add_argument("--model_id", type=str, default="test", help="model id")
-    parser.add_argument(
-        "--model", type=str, default="ETSformer", help="model name, options: [ETSformer]"
-    )
+    parser.add_argument("--model", type=str, default="ETSformer", help="model name, options: [ETSformer]")
 
     # data loader
     parser.add_argument("--data", type=str, default="custom", help="dataset type")

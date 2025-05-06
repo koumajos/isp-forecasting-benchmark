@@ -22,7 +22,7 @@ with open(missing_file, "r") as commands:
     commands_lines = commands.readlines()
     for line in range(0, len(commands_lines), jobs_at_once):
         with open(f"{path}/synced/temp_script.sh", "w") as f:
-            command = "\n".join(commands_lines[line: line + jobs_at_once])
+            command = "\n".join(commands_lines[line : line + jobs_at_once])
 
             script = f"""
             #!/bin/bash
