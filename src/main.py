@@ -8,7 +8,7 @@ from src.ETSformer.utils.arguments import add_etsformer_args
 
 parser = argparse.ArgumentParser(description="Argument parser for data processing parameters.")
 
-parser.add_argument("--main-dir", type=str, default="./data", help="Main directory for data.")
+parser.add_argument("--main-dir", type=str, default=".", help="Main directory for data.")
 parser.add_argument(
     "--aggregation",
     type=str,
@@ -16,7 +16,7 @@ parser.add_argument(
     choices=["agg_1_day", "agg_1_hour", "agg_10_minutes"],
     help="Aggregation method.",
 )
-parser.add_argument("--file-id", type=int, default=25, help="File ID.")
+parser.add_argument("--file-id", type=int, default=1, help="File ID.")
 parser.add_argument(
     "--subnets",
     action="store_true",
@@ -38,7 +38,7 @@ parser.add_argument(
     default=[],
     help="Time series attributes to use for training.",
 )
-parser.add_argument("--model-name", type=str, default="LSTM_FCN", help="Model name.")
+parser.add_argument("--model-name", type=str, default="GRU_FCN", help="Model name.")
 parser.add_argument("--impute", type=str, default="zeros", help="Imputation method.")
 parser.add_argument("--prediction-window", type=int, default=1, help="Number of samples to predict.")
 parser.add_argument("--anomaly-threshold", type=float, default=0.09, help="Value for anomaly threshold.")

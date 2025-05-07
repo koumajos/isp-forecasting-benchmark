@@ -57,12 +57,12 @@ class RunnerComponent:
         )
         try:
             record.to_csv(
-                f"{self.MAIN_DIR}/output/records/{self.GROUP}/{self.AGGREGATION}/{self.MODEL_NAME}/record_{self.PBS_JOB_ID}_{self.ts_attribute}.csv"
+                f"{self.MAIN_DIR}/output/records/{self.GROUP}/{self.AGGREGATION}/{self.MODEL_NAME}/record_{self.PBS_JOB_ID}_{self.ts_attribute}_{self.TRAINING_WINDOW}_{self.PREDICTION_WINDOW}_{self.FILE_ID}.csv"
             )
         except OSError:
             os.makedirs(f"{self.MAIN_DIR}/output/records/{self.GROUP}/{self.AGGREGATION}/{self.MODEL_NAME}")
             record.to_csv(
-                f"{self.MAIN_DIR}/output/records/{self.GROUP}/{self.AGGREGATION}/{self.MODEL_NAME}/record_{self.PBS_JOB_ID}_{self.ts_attribute}.csv"
+                f"{self.MAIN_DIR}/output/records/{self.GROUP}/{self.AGGREGATION}/{self.MODEL_NAME}/record_{self.PBS_JOB_ID}_{self.ts_attribute}_{self.TRAINING_WINDOW}_{self.PREDICTION_WINDOW}_{self.FILE_ID}.csv"
             )
 
     def get_test_set_index(self, X) -> int:
