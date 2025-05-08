@@ -8,9 +8,7 @@ on the CESNET24-TimeSeries dataset.
 ## Repository structure
 ```
 isp-forecasting-benchmark/
-├── analysis_R2-SCORE.ipynb   # Notebook analyzing R² Score
-├── analysis_RMSE.ipynb       # Notebook analyzing RMSE
-├── analysis_SMAPE.ipynb      # Notebook analyzing SMAPE
+├── analysis/                 # Directory containing notebooks with analyses
 ├── overall_results.pdf       # Consolidated results and visualizations
 ├── results/                  # Directory containing model outputs and logs
 ├── src/                      # Source code for data processing and modeling
